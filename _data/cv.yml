@@ -1,0 +1,130 @@
+# Source for both the CV page (/cv/) and the PDF that RenderCV builds from it
+# (bin/render_cv.py, run by .github/workflows/render-cv.yml). `label` and `summary`
+# are web-page fields; the script turns them into RenderCV's headline and a "Profile"
+# section. Otherwise stick to field names both understand: `degree` for education,
+# and `label`/`details` lines for skills, platforms and courses.
+# Section titles matter on the web page: "Skills" expects name/keywords entries, so the
+# label/details sections use other titles.
+cv:
+  name: Tim Martin
+  label: Robotics AI Engineer
+  location: Munich, Germany
+  email: hello@timfmartin.dev
+  website: https://timfmartin.dev
+  photo: ../assets/img/prof_pic.jpg # PDF only, relative to this file
+  summary: >-
+    Robotics AI engineer focused on robot learning: teleoperation and data pipelines,
+    fine-tuning and deploying vision-language-action models, imitation and reinforcement
+    learning on humanoids, quadrupeds and robot arms. Background from end-to-end
+    autonomous driving at Bosch to mobile manipulation at ESA.
+
+  social_networks:
+    - network: LinkedIn
+      username: tim-f-martin
+    - network: GitHub
+      username: timfmartin
+    - network: X
+      username: tim1234158837
+
+  sections:
+    Experience:
+      - company: Accenture, Next Gen Robotics
+        position: Robotics AI Engineer
+        start_date: 2025-10
+        end_date: present
+        highlights:
+          - Built teleoperation setups (GELLO) and data pipelines for the Unitree G1 humanoid, a dual-arm YAM setup, Franka and UR arms
+          - Fine-tuned and deployed VLA (vision-language-action) models on Unitree humanoids, YAM, Franka, UR and OpenArm arms
+          - Built an agent harness that lets frontier LLMs control robots
+          - Isaac Sim, Isaac Lab and ROS 2 development
+          - Boston Dynamics Spot inspection missions, using frontier LLMs for image-based inspection
+
+      - company: KIT, Institute for Information Management in Engineering
+        position: Research Assistant
+        start_date: 2025-06
+        end_date: 2025-09
+        highlights:
+          - Developed locomotion policies for Unitree Go2 quadrupeds with reinforcement learning (PPO) and adversarial motion priors (AMP)
+          - Sim-to-real transfer of state-of-the-art control policies, trained in Isaac Lab
+          - Literature research on state-of-the-art legged locomotion, in close collaboration with a PhD researcher
+
+      - company: Bosch Center for Artificial Intelligence
+        position: Internship and Master Thesis
+        start_date: 2024-05
+        end_date: 2025-03
+        summary: 'Thesis: "Towards End-to-End Autonomous Driving on Non-Academic Data", grade 1.0'
+        highlights:
+          - "Internship: built a data pipeline to ingest and pre-process large-scale vehicle fleet data for fine-tuning end-to-end driving models"
+          - "Thesis: applied the well-known VAD and VADv2 end-to-end driving models to this data and improved them with novel features"
+          - Offline and online evaluation, and deployment in a test vehicle
+
+      - company: KIT, Institute for Materials Handling and Logistics Systems
+        position: Research Assistant
+        start_date: 2023-12
+        end_date: 2024-05
+        highlights:
+          - Autonomous mobile robots for last-mile delivery
+          - "Perception module: camera calibration and camera-LiDAR alignment"
+          - Some CAD design
+
+      - company: ESA, European Astronaut Centre
+        position: Internship
+        start_date: 2023-04
+        end_date: 2023-10
+        highlights:
+          - Combined a UFactory xArm 5 robot arm with a Clearpath mobile platform into one mobile manipulator
+          - Implemented a teleoperation framework using Foxglove
+          - Implemented camera-based autonomous grasping
+
+      - company: KIT, Institute for Automation and Applied Computer Science
+        position: Research Assistant and Bachelor Thesis
+        start_date: 2021-10
+        end_date: 2023-03
+        summary: 'Thesis: "Redispatch 2.0: Forecasting the feed-in quantity of renewable energies using machine learning approaches", grade 1.0'
+        highlights:
+          - Co-authored several papers that extend and publish the approach developed in the bachelor thesis
+
+    Education:
+      - institution: Karlsruhe Institute of Technology (KIT)
+        area: Mechatronics and Information Technology
+        degree: M.Sc.
+        start_date: 2021-10
+        end_date: 2025-09
+        highlights:
+          - Focus on robotics and AI; final grade 1.1 (top 1%)
+
+      - institution: Karlsruhe Institute of Technology (KIT)
+        area: Mechanical Engineering
+        degree: B.Sc.
+        start_date: 2017-10
+        end_date: 2021-10
+        highlights:
+          - "Specialization: mechatronics and data science; grade 1.9"
+
+    Technical Skills:
+      - label: Robot learning
+        details: VLA fine-tuning and deployment, RL (PPO, AMP), Sim2Real, LLM agents for robot control
+      - label: Tools
+        details: Python, PyTorch, ROS 2, Isaac Sim, Isaac Lab, LeRobot
+      - label: Data and hardware
+        details: Teleoperation and data pipelines, camera and LiDAR calibration
+
+    Robot Platforms:
+      - label: Humanoids and legged
+        details: Unitree G1 humanoid, Unitree Go2 quadruped, Boston Dynamics Spot
+      - label: Arms
+        details: Dual-arm YAM setup, Franka, UR5, OpenArm, UFactory xArm 5
+      - label: Mobile and vehicles
+        details: Clearpath mobile base, autonomous test vehicle
+
+    Courses:
+      - label: Hugging Face
+        details: LeRobot, LLM Course, AI Agents Course, MCP Course
+      - label: KIT
+        details: Python Course
+
+    Languages:
+      - name: German
+        summary: Native
+      - name: English
+        summary: Fluent

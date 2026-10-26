@@ -1,0 +1,8 @@
+github_users:
+  - timfmartin
+
+repo_description_lines_max: 2
+
+# add repositories as owner/name to show them as cards, e.g.
+# github_repos:
+#   - timfmartin/my-robot-project

@@ -1,0 +1,46 @@
+name: Render a CV
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - "_data/cv.yml"
+      - "bin/render_cv.py"
+      - "assets/rendercv/design.yaml"
+      - "assets/rendercv/locale.yaml"
+      - "assets/rendercv/settings.yaml"
+  workflow_call:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rendercv:
+    name: RenderCV
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install RenderCV
+        run: |
+          pip install -r requirements.txt
+      - name: RenderCV
+        run: python bin/render_cv.py
+      - name: Upload rendercv_output as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RenderCV Output
+          path: assets/rendercv/rendercv_output
+      - name: Push the changes
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "CV PDF unchanged"
+            exit 0
+          fi
+          git commit -m "chore: render the latest CV"
+          git push
