@@ -4,7 +4,7 @@
 _data/cv.yml also feeds the CV web page, which uses two fields RenderCV rejects:
 `label` (the job title) and `summary` (the profile paragraph). This writes a
 RenderCV-compatible copy (label -> headline, summary -> a "Profile" section,
-languages -> one-line "German: Native" entries), renders it with the design,
+languages -> one-line "German: Native" entries, web-only `logo` fields dropped), renders it with the design,
 locale and settings files in assets/rendercv/, then removes the copy and
 everything in the output folder except the PDF (Typst source, copied photo).
 
@@ -34,6 +34,10 @@ def main() -> int:
     summary = cv.pop("summary", None)
     if summary:
         cv["sections"] = {"Profile": [summary], **cv.get("sections", {})}
+    for entries in cv.get("sections", {}).values():
+        for entry in entries:
+            if isinstance(entry, dict):
+                entry.pop("logo", None)  # web-only company logo
     languages = cv.get("sections", {}).get("Languages")
     if languages:
         cv["sections"]["Languages"] = [{"label": entry["name"], "details": entry["summary"]} for entry in languages]
