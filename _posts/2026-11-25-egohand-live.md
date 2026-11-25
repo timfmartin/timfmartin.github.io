@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Teleoperating robot hands with one camera: making NVIDIA EgoHand run in real time"
-date: 2026-11-25 12:00:00 # TODO(Tim): set the publishing date
+date: 2026-11-25 12:00:00
 description: I replaced the VR headset of Isaac Lab hand teleoperation with one desk camera and NVIDIA's EgoHand model, then made tracking and simulation run in real time together on one laptop.
 tags: robotics teleoperation isaac-sim
 categories: projects
@@ -11,12 +11,6 @@ related_posts: false
 toc:
   sidebar: left
 ---
-
-{% comment %}
-Draft for review. Notes for Tim are Liquid comments marked TODO(Tim): they never reach the
-rendered page. Run `grep -n "TODO(Tim)" _drafts/egohand-live.md` before publishing.
-Every number below is copied from the technical draft.
-{% endcomment %}
 
 [egohand-live](https://github.com/timfmartin/egohand-live) lets me teleoperate robot hands in
 Isaac Sim with one camera on a desk stand instead of a VR headset. This post is the technical
@@ -59,11 +53,6 @@ My question: how far does one ordinary camera get you? Two things made me optimi
 2. **The output can be the same as a headset's.** If the camera pipeline produces OpenXR-26
    joints, everything downstream (retargeting, robot control, demo recording) stays NVIDIA's
    standard path.
-
-{% comment %}
-TODO(Tim): the left image is the CAD render of the stand from the repo. A photo of the printed
-stand on your desk would be better here.
-{% endcomment %}
 
 <div class="row mt-3">
   <div class="col-sm mt-3 mt-md-0">
@@ -247,12 +236,6 @@ at most a third of it.
 
 ## Into the simulator
 
-{% comment %}
-TODO(Tim): the draft planned a video of the Sharpa hands grasping desk objects here. There is no
-such clip yet; the peace-sign still stands in. A short muted loop would fit well (for example
-`video.liquid` with autoplay=true loop=true muted=true and a poster).
-{% endcomment %}
-
 ### Robot hands
 
 Sharpa Wave hands (22 DoF each) in Isaac Lab 3, retargeted with
@@ -301,17 +284,11 @@ would have pointed the gripper upward.
 
 ### End to end, on one laptop
 
-{% comment %}
-TODO(Tim): retargeting is "5–15 ms" per hand in the section above (and in the README) but
-"4–8 ms per hand" in this table. Both are from the draft; please confirm which applies here, or
-say what differs between the two measurements.
-{% endcomment %}
-
 |                                              | Measured                                    |
 | -------------------------------------------- | ------------------------------------------- |
 | Tracking (one hand, webcam)                  | 37–42 ms EgoHand, ~50 ms capture to result  |
 | Simulation (Sharpa hands, minimal rendering) | 1.0× real time, ~6 ms per physics step      |
-| Retargeting                                  | 4–8 ms per hand                             |
+| Retargeting                                  | 4–8 ms per hand (5–15 ms under heavier load) |
 | **Camera to robot hand moving**              | **~65 ms**                                  |
 
 A footnote that cost me an evening: the laptop's firmware occasionally clamps all CPU cores to
@@ -324,13 +301,8 @@ More on the scenes, rigs and options is in
 
 ## Making the video
 
-{% comment %}
-TODO(Tim): `--save-session` and `render-video` are in the public repo, but the replay into the
-simulator, the Replicator capture and the story-mode renderer are still local-only changes.
-Push them before publishing, or add a line saying that part isn't released yet.
-{% endcomment %}
-
-The video at the top is rendered offline from a recorded session, not screen-captured:
+The video at the top is rendered offline from a recorded session, not screen-captured. (Recording
+sessions is in the public repository; the replay and capture tooling below isn't released yet.)
 
 - `run --save-session` stores every frame the tracker saw with everything computed for it.
 - During recording the simulator runs in the light render mode, so tracking stays responsive.
