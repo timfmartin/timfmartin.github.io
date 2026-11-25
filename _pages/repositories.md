@@ -3,7 +3,7 @@ layout: page
 permalink: /repositories/
 title: repositories
 description: Code and experiments on GitHub.
-nav: true
+nav: false # hidden from the menu: project pages link the code
 nav_order: 4
 ---
 
