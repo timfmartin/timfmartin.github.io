@@ -117,9 +117,6 @@ subscribe: the simulator, a viewer, a retargeting process.
 
 {% include figure.liquid path="assets/img/egohand-live/pipeline.jpg" class="img-fluid rounded z-depth-1" zoomable=true alt="Four panels: tracked hands in the camera image, the hand skeletons, the retargeted robot hands, and the robot hands in Isaac Sim" caption="From camera to simulator: the tracked hands in the camera image, the 3D hand joints, the retargeted Sharpa Wave robot hands, and Isaac Sim." %}
 
-More detail on the tracker, the output format and camera setup is in
-[docs/tracking.md](https://github.com/timfmartin/egohand-live/blob/main/docs/tracking.md).
-
 ## Performance: from 120 to ~60 ms per frame
 
 On the RTX 5090 the first live version ran at ~22 FPS for two hands. On my RTX 3080 Ti laptop,
