@@ -12,7 +12,7 @@ cv:
   location: Munich, Germany
   email: hello@timfmartin.dev
   website: https://timfmartin.dev
-  photo: ../assets/img/prof_pic.jpg # PDF only, relative to this file
+  photo: ../assets/img/cv_photo.jpg # PDF only, relative to this file (the site photo is prof_pic.jpg)
   summary: >-
     Robotics AI engineer focused on robot learning: teleoperation and data pipelines,
     fine-tuning and deploying vision-language-action models, imitation and reinforcement
